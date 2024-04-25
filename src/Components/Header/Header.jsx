@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="h-20 shadow-md bg-white fixed w-full z-40">
       <div className="h-full container mx-auto flex items-center px-4 justify-between">
-        <div className="w-[100px] h-[100px] flex items-center">
+        <div className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] flex items-center">
           <img src="https://i.ibb.co/3mFM79K/eclick-logo.png" alt="" />
         </div>
 
