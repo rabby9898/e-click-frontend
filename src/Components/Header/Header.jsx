@@ -4,9 +4,9 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 const Header = () => {
   return (
-    <div className="h-16 shadow-md bg-white fixed w-full z-40">
+    <div className="h-20 shadow-md bg-white fixed w-full z-40">
       <div className="h-full container mx-auto flex items-center px-4 justify-between">
-        <div className="">
+        <div className="w-[100px] h-[100px] flex items-center">
           <img src="https://i.ibb.co/3mFM79K/eclick-logo.png" alt="" />
         </div>
 
@@ -14,7 +14,7 @@ const Header = () => {
           <input
             type="text"
             placeholder="search product here..."
-            className="w-full outline-none"
+            className="w-full px-3 outline-none"
           />
           <div className="text-lg min-w-[50px] h-8 bg-red-600 flex items-center justify-center rounded-r-full text-white">
             <GrSearch />
@@ -52,7 +52,7 @@ const Header = () => {
           <div>
             <Link
               to={"/login"}
-              className="px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700"
+              className="px-5 py-3 rounded-full text-white bg-red-600 hover:bg-red-700"
             >
               Login
             </Link>
