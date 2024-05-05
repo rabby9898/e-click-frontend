@@ -26,17 +26,6 @@ const Header = () => {
             <FaRegCircleUser />
           </div>
 
-          {/* <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded">
-            <nav>
-              <Link
-                to={"/admin-panel/all-products"}
-                className="whitespace-nowrap hidden md:block hover:bg-slate-100 p-2"
-              >
-                Admin Panel
-              </Link>
-            </nav>
-          </div> */}
-
           <div>
             <Link to={"/cart"} className="text-2xl relative">
               <span>
