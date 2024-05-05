@@ -27,9 +27,9 @@ const Header = () => {
           </div>
 
           <div>
-            {/* <Link to={"/cart"} className="text-2xl relative"> */}
+            <Link to={"/cart"} className="text-2xl relative">
               <span>
-                {/* <FaShoppingCart /> */}
+                <FaShoppingCart />
               </span>
 
               <div className="bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3">
