@@ -65,9 +65,6 @@ const Login = () => {
                           placeholder="Your Email"
                           name="email"
                         />
-                        {/* <label className="pointer-events-none absolute left-3 top-1 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.5rem] leading-[1.6] text-neutral-500 transition-all duration-200 dark:text-neutral-400 dark:peer-focus:text-primary">
-                          Email
-                        </label> */}
                       </div>
 
                       {/* <!--Password input--> */}
@@ -82,11 +79,6 @@ const Login = () => {
                           placeholder="Password"
                           name="password"
                         />
-                        {/* {!show && (
-                          <label className="pointer-events-none absolute left-3 top-1 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.5rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">
-                            Password
-                          </label>
-                        )} */}
                         <span
                           onClick={() => setShow(!show)}
                           className="absolute top-[10px] right-[32px] text-2xl"
