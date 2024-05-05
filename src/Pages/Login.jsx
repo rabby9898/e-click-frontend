@@ -6,8 +6,18 @@ const Login = () => {
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   };
+  const sectionBg = {
+    background: `url('https://i.ibb.co/6mQBTyF/6020.jpg')`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
+  };
+
   return (
-    <section className="gradient-form h-full bg-neutral-200 dark:bg-neutral-700 ">
+    <section
+      style={sectionBg}
+      className="gradient-form h-full bg-neutral-200 dark:bg-neutral-700"
+    >
       <div className="container h-full p-10 mx-auto">
         <div className="flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
           <div className="max-w-5xl">
@@ -19,21 +29,20 @@ const Login = () => {
                     <div className="text-center">
                       <img
                         className="mx-auto w-32"
-                        src={loginIcon}
+                        // src={loginIcon}
+                        src="https://i.ibb.co/6s3jSTw/user-4517806.png"
                         alt="logo"
                       />
                       <h4
                         style={gradientStyle}
-                        className="mb-12 mt-3 pb-1 text-xl font-semibold"
+                        className="mb-12 mt-3 pb-1 text-3xl font-semibold"
                       >
-                        Join us, Shop us
+                        Please login to your account
                       </h4>
                     </div>
 
                     <form>
-                      <p className="mb-4 text-xl mt-10">
-                        Please login to your account
-                      </p>
+                      <p className="mb-4 text-xl mt-10"></p>
                       {/* <!--Username input--> */}
                       <div
                         className="relative mb-4 mt-10"
@@ -74,7 +83,7 @@ const Login = () => {
                           data-twe-ripple-color="light"
                           style={{
                             background:
-                              "linear-gradient(to right, #ee7724, #dc2626, #dc2626 , #b44593)",
+                              "linear-gradient(to right, #ee7724, #dc2626, #dc2626 , #7d0c0c)",
                           }}
                         >
                           Log in
@@ -104,7 +113,7 @@ const Login = () => {
                   className="flex items-center rounded-b-lg lg:w-2/5 lg:rounded-e-lg lg:rounded-bl-none"
                   style={{
                     background:
-                      "linear-gradient(to right, #ee7724, #dc2626 , #dc2626 , #b44593)",
+                      "linear-gradient(to right, #ee7724, #dc2626 , #dc2626 , #7d0c0c)",
                   }}
                 >
                   <div className="px-4 py-6 text-white md:mx-6 md:p-12">
