@@ -1,8 +1,10 @@
-import loginIcon from "../assest/signin.gif";
-
+import { useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 const Login = () => {
+  const [show, setShow] = useState(false);
+  // gradient css
   const gradientStyle = {
-    background: "linear-gradient(to right, #ee7724, #dc2626, #dc2626, #b44593)",
+    background: "linear-gradient(to right, #7d0c0c, #dc2626, #ee7724)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   };
@@ -13,6 +15,14 @@ const Login = () => {
     backgroundPosition: "center center",
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(email, password);
+  };
   return (
     <section
       style={sectionBg}
@@ -41,7 +51,7 @@ const Login = () => {
                       </h4>
                     </div>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                       <p className="mb-4 text-xl mt-10"></p>
                       {/* <!--Username input--> */}
                       <div
@@ -50,13 +60,14 @@ const Login = () => {
                       >
                         <input
                           type="text"
-                          className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.5rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                          className="peer block min-h-[auto] w-full rounded border-[0.1px] border-gray-200  bg-transparent px-3 py-[0.8rem] leading-[1.6] outline-none transition-all duration-200 ease-linear motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill)]:placeholder:opacity-0"
                           id="exampleFormControlInput1"
-                          placeholder="Username"
+                          placeholder="Your Email"
+                          name="email"
                         />
-                        <label className="pointer-events-none absolute left-3 top-1 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">
-                          Username
-                        </label>
+                        {/* <label className="pointer-events-none absolute left-3 top-1 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.5rem] leading-[1.6] text-neutral-500 transition-all duration-200 dark:text-neutral-400 dark:peer-focus:text-primary">
+                          Email
+                        </label> */}
                       </div>
 
                       {/* <!--Password input--> */}
@@ -65,20 +76,29 @@ const Login = () => {
                         data-twe-input-wrapper-init
                       >
                         <input
-                          type="password"
-                          className="peer block min-h-[auto] w-full rounded border-0 bg-transparent mt-5 px-3 py-[0.5rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                          type={show ? "text" : "password"}
+                          className="peer block min-h-[auto] w-full rounded border-[0.1px] border-gray-200 bg-transparent mt-5 px-3 py-[0.8rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill )]:placeholder:opacity-0"
                           id="exampleFormControlInput11"
                           placeholder="Password"
+                          name="password"
                         />
-                        <label className="pointer-events-none absolute left-3 top-1 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">
-                          Password
-                        </label>
+                        {/* {!show && (
+                          <label className="pointer-events-none absolute left-3 top-1 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.5rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">
+                            Password
+                          </label>
+                        )} */}
+                        <span
+                          onClick={() => setShow(!show)}
+                          className="absolute top-[10px] right-[32px] text-2xl"
+                        >
+                          {show ? <AiFillEyeInvisible /> : <AiFillEye />}
+                        </span>
                       </div>
 
                       <div className="mb-12 pb-1 pt-1 text-center">
                         <button
                           className="mb-3 inline-block w-full rounded px-6 pb-3 pt-4 text-xs font-medium uppercase leading-normal text-white shadow-dark-3 transition duration-150 ease-in-out hover:shadow-dark-2 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:shadow-dark-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
-                          type="button"
+                          type="submit"
                           data-twe-ripple-init
                           data-twe-ripple-color="light"
                           style={{
