@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 const Register = () => {
   const [show, setShow] = useState(false);
   // gradient css
@@ -131,6 +133,19 @@ const Register = () => {
                         >
                           Register
                         </button>
+                      </div>
+                      <div className="flex items-center justify-between pb-6">
+                        <p className="mb-0 me-2">Already have an account?</p>
+                        <Link to={"/login"}>
+                          <button
+                            type="button"
+                            className=" flex justify-center items-center gap-2 rounded border-2 hover:border-red-600 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-danger-50/50 hover:text-danger-600 focus:border-danger-600 focus:bg-danger-50/50 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-rose-950 dark:focus:bg-rose-950"
+                            data-twe-ripple-init
+                            data-twe-ripple-color="light"
+                          >
+                            Login <FaArrowRightLong />
+                          </button>
+                        </Link>
                       </div>
                     </form>
                   </div>
