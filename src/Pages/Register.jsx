@@ -2,8 +2,12 @@ import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import imageToBase from "../Api/ImageUploader";
 const Register = () => {
   const [show, setShow] = useState(false);
+  const [data, setData] = useState({
+    profilePic: "",
+  });
   // gradient css
   const gradientStyle = {
     background: "linear-gradient(to right, #7d0c0c, #dc2626, #ee7724)",
@@ -24,6 +28,21 @@ const Register = () => {
     const password = form.password.value;
 
     console.log(email, password);
+  };
+
+  const handleUploadPic = async (e) => {
+    const file = e.target.files[0];
+
+    const imagePic = await imageToBase(file);
+
+    console.log(imagePic);
+
+    setData((prev) => {
+      return {
+        ...prev,
+        profilePic: imagePic,
+      };
+    });
   };
   return (
     <section
@@ -60,9 +79,12 @@ const Register = () => {
                   <div className="md:mx-6 md:p-12">
                     <div className="text-center">
                       <img
-                        className="mx-auto w-32"
+                        className="mx-auto w-32 rounded-full"
                         // src={loginIcon}
-                        src="https://i.ibb.co/6s3jSTw/user-4517806.png"
+                        src={
+                          data.profilePic ||
+                          "https://i.ibb.co/6s3jSTw/user-4517806.png"
+                        }
                         alt="logo"
                       />
                       <h4
@@ -118,6 +140,20 @@ const Register = () => {
                         >
                           {show ? <AiFillEyeInvisible /> : <AiFillEye />}
                         </span>
+                      </div>
+                      <div className="my-8">
+                        <label
+                          htmlFor="image"
+                          className="block mb-2 text-base text-gray-400"
+                        >
+                          Select Your Profile Image:
+                        </label>
+                        <input
+                          onChange={handleUploadPic}
+                          type="file"
+                          className="file-input file-input-bordered file-input-error w-full max-w-xs"
+                          name="image"
+                        />
                       </div>
 
                       <div className="mb-12 pb-1 pt-1 text-center">
