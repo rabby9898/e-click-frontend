@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import imageToBase from "../Api/ImageUploader";
+import SummaryApi from "../common";
+import toast from "react-hot-toast";
 const Register = () => {
   const [show, setShow] = useState(false);
-  const [data, setData] = useState({
-    profilePic: "",
-  });
+
   // gradient css
   const gradientStyle = {
     background: "linear-gradient(to right, #7d0c0c, #dc2626, #ee7724)",
@@ -21,14 +21,24 @@ const Register = () => {
     backgroundPosition: "center center",
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    const confirmPassword = form.confirmPassword.value;
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+    name: "",
+    confirmPassword: "",
+    profilePic: "",
+  });
+  const navigate = useNavigate();
 
-    console.log(email, password, confirmPassword);
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setData((preve) => {
+      return {
+        ...preve,
+        [name]: value,
+      };
+    });
   };
 
   const handleUploadPic = async (e) => {
@@ -36,14 +46,39 @@ const Register = () => {
 
     const imagePic = await imageToBase(file);
 
-    console.log(imagePic);
-
-    setData((prev) => {
+    setData((preve) => {
       return {
-        ...prev,
+        ...preve,
         profilePic: imagePic,
       };
     });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (data.password === data.confirmPassword) {
+      const dataResponse = await fetch(SummaryApi.signUP.url, {
+        method: SummaryApi.signUP.method,
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const dataApi = await dataResponse.json();
+
+      if (dataApi.success) {
+        toast.success(dataApi.message);
+        navigate("/login");
+      }
+
+      if (dataApi.error) {
+        toast.error(dataApi.message);
+      }
+    } else {
+      toast.error("Please check password and confirm password");
+    }
   };
   return (
     <section
@@ -108,6 +143,7 @@ const Register = () => {
                           id="exampleFormControlInput1"
                           placeholder="Your Name"
                           name="name"
+                          onChange={handleOnChange}
                         />
                       </div>
                       <div
@@ -120,6 +156,7 @@ const Register = () => {
                           id="exampleFormControlInput1"
                           placeholder="Your Email"
                           name="email"
+                          onChange={handleOnChange}
                         />
                       </div>
 
@@ -134,6 +171,7 @@ const Register = () => {
                           id="exampleFormControlInput11"
                           placeholder="Password"
                           name="password"
+                          onChange={handleOnChange}
                         />
                         <span
                           onClick={() => setShow(!show)}
@@ -152,6 +190,7 @@ const Register = () => {
                           id="exampleFormControlInput11"
                           placeholder="Confirm Password"
                           name="confirmPassword"
+                          onChange={handleOnChange}
                         />
                         <span
                           onClick={() => setShow(!show)}
