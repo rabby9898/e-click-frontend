@@ -2,7 +2,9 @@
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import SummaryApi from "../common";
 const Login = () => {
   const [show, setShow] = useState(false);
   // gradient css
@@ -18,14 +20,49 @@ const Login = () => {
     backgroundPosition: "center center",
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
-    console.log(email, password);
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setData((preve) => {
+      return {
+        ...preve,
+        [name]: value,
+      };
+    });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const dataResponse = await fetch(SummaryApi.signIn.url, {
+      method: SummaryApi.signIn.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const dataApi = await dataResponse.json();
+
+    if (dataApi.success) {
+      toast.success(dataApi.message);
+      // navigate("/");
+    }
+
+    if (dataApi.error) {
+      toast.error(dataApi.message);
+    }
+  };
+
+  console.log("data login", data);
+
   return (
     <section
       style={sectionBg}
@@ -67,6 +104,7 @@ const Login = () => {
                           id="exampleFormControlInput1"
                           placeholder="Your Email"
                           name="email"
+                          onChange={handleOnChange}
                         />
                       </div>
 
@@ -81,6 +119,7 @@ const Login = () => {
                           id="exampleFormControlInput11"
                           placeholder="Password"
                           name="password"
+                          onChange={handleOnChange}
                         />
                         <span
                           onClick={() => setShow(!show)}
