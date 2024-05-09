@@ -26,8 +26,9 @@ const Register = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
 
-    console.log(email, password);
+    console.log(email, password, confirmPassword);
   };
 
   const handleUploadPic = async (e) => {
@@ -133,6 +134,24 @@ const Register = () => {
                           id="exampleFormControlInput11"
                           placeholder="Password"
                           name="password"
+                        />
+                        <span
+                          onClick={() => setShow(!show)}
+                          className="absolute top-[10px] right-[32px] text-2xl"
+                        >
+                          {show ? <AiFillEyeInvisible /> : <AiFillEye />}
+                        </span>
+                      </div>
+                      <div
+                        className="relative mb-4"
+                        data-twe-input-wrapper-init
+                      >
+                        <input
+                          type={show ? "text" : "password"}
+                          className="peer block min-h-[auto] w-full rounded border-[0.1px] border-gray-200 bg-transparent mt-5 px-3 py-[0.8rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill )]:placeholder:opacity-0"
+                          id="exampleFormControlInput11"
+                          placeholder="Confirm Password"
+                          name="confirmPassword"
                         />
                         <span
                           onClick={() => setShow(!show)}
