@@ -53,7 +53,7 @@ const Login = () => {
 
     if (dataApi.success) {
       toast.success(dataApi.message);
-      // navigate("/");
+      navigate("/");
     }
 
     if (dataApi.error) {
