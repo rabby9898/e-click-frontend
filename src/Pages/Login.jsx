@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import SummaryApi from "../common";
+import Context from "../Context/Context";
 const Login = () => {
-  const [show, setShow] = useState(false);
   // gradient css
   const gradientStyle = {
     background: "linear-gradient(to right, #7d0c0c, #dc2626, #ee7724)",
@@ -20,10 +20,13 @@ const Login = () => {
     backgroundPosition: "center center",
   };
 
+  /*-------------------------------*/
+  const [show, setShow] = useState(false);
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+  const { fetchUserDetails } = useContext(Context);
   const navigate = useNavigate();
 
   const handleOnChange = (e) => {
@@ -54,6 +57,7 @@ const Login = () => {
     if (dataApi.success) {
       toast.success(dataApi.message);
       navigate("/");
+      fetchUserDetails();
     }
 
     if (dataApi.error) {

@@ -28,6 +28,7 @@ const Register = () => {
     confirmPassword: "",
     profilePic: "",
   });
+  console.log("profile", data.profilePic);
   const navigate = useNavigate();
 
   const handleOnChange = (e) => {

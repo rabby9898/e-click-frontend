@@ -3,6 +3,7 @@ import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 import { useEffect } from "react";
 import SummaryApi from "../common";
+import Context from "../Context/Context";
 
 const MainLayout = () => {
   const fetchUserDetails = async () => {
@@ -17,16 +18,22 @@ const MainLayout = () => {
   useEffect(() => {
     // user Details info
     fetchUserDetails();
-  });
+  }, []);
 
   return (
-    <div>
-      <Header />
-      <main className="min-h-[calc(100vh-140px)]">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Context.Provider
+        value={{
+          fetchUserDetails, //user details data fetch
+        }}
+      >
+        <Header />
+        <main className="min-h-[calc(100vh-140px)]">
+          <Outlet />
+        </main>
+        <Footer />
+      </Context.Provider>
+    </>
   );
 };
 
