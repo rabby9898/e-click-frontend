@@ -46,16 +46,28 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-7">
-          <div className="text-3xl cursor-pointer relative flex justify-center">
-            {user?.profilePic ? (
-              <img
-                className="w-10 h-10 rounded-full"
-                src={user?.profilePic}
-                alt={user?.name}
-              />
-            ) : (
-              <FaRegCircleUser />
-            )}
+          <div className="dropdown dropdown-hover">
+            <div tabIndex={0} role="button" className="">
+              <div className="text-3xl cursor-pointer relative flex justify-center">
+                {user?.profilePic ? (
+                  <img
+                    className="w-10 h-10 rounded-full"
+                    src={user?.profilePic}
+                    alt={user?.name}
+                  />
+                ) : (
+                  <FaRegCircleUser />
+                )}
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link to={"/Admin-dashboard"}>Admin Dashboard</Link>
+              </li>
+            </ul>
           </div>
 
           <div>
