@@ -65,7 +65,9 @@ const Header = () => {
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to={"/Admin-dashboard"}>Admin Dashboard</Link>
+                <Link className="hidden md:block" to={"/Admin-dashboard"}>
+                  Admin Dashboard
+                </Link>
               </li>
             </ul>
           </div>

@@ -1,11 +1,12 @@
-import { FaRegCircleUser } from "react-icons/fa6";
+import { FaRegCircleUser, FaUsers } from "react-icons/fa6";
 import { useSelector } from "react-redux";
-
+import { Link, Outlet } from "react-router-dom";
+import { IoBagAddOutline } from "react-icons/io5";
 const AdminDashboard = () => {
   const user = useSelector((state) => state.user?.user);
   return (
-    <div className="min-h-[calc(100vh-120px)] flex">
-      <aside className="bg-slate-300 min-h-full w-full max-w-60">
+    <div className="min-h-[calc(100vh-120px)] md:flex hidden ">
+      <aside className="bg-gray-50 min-h-full w-full max-w-60">
         <div className="h-32 flex justify-center items-center flex-col mt-8">
           <div className=" text-3xl cursor-pointer relative ">
             {user?.profilePic ? (
@@ -23,8 +24,32 @@ const AdminDashboard = () => {
             <p className="text-sm">{user?.role}</p>
           </div>
         </div>
+        <div className="px-3 mt-5 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+          <ul className="space-y-2 font-medium">
+            <li>
+              <Link
+                to={"all-users"}
+                className="flex items-center text-base p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <FaUsers />
+                <span className="ms-3">All Users</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"add-products"}
+                className="flex items-center text-base p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <IoBagAddOutline />
+                <span className="ms-3">Add Product</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
       </aside>
-      <main>main</main>
+      <main className="w-full h-full">
+        <Outlet />
+      </main>
     </div>
   );
 };
