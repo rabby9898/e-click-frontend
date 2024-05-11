@@ -4,8 +4,8 @@ import Login from "../Pages/Login";
 import Home from "../Pages/Home";
 import Register from "../Pages/Register";
 import AdminDashboard from "../Pages/AdminDashboard";
-import AllUsers from "../Pages/Admin/AllUsers";
 import AddProducts from "../Pages/Admin/AddProducts";
+import AllUsers from "../Pages/Admin/AllUsers";
 
 const router = createBrowserRouter([
   {
