@@ -4,14 +4,21 @@ import Footer from "../Components/Footer/Footer";
 import { useEffect } from "react";
 import SummaryApi from "../common";
 import Context from "../Context/Context";
+import { useDispatch } from "react-redux";
+import { setUserDetails } from "../Store/userSlice";
 
 const MainLayout = () => {
+  const dispatch = useDispatch();
   const fetchUserDetails = async () => {
     const dataResponse = await fetch(SummaryApi.current_user.url, {
       method: SummaryApi.current_user.method,
       credentials: "include",
     });
     const dataApi = await dataResponse.json();
+
+    if (dataApi.success) {
+      dispatch(setUserDetails(dataApi.data));
+    }
     console.log(dataApi);
   };
 
