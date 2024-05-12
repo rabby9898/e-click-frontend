@@ -38,9 +38,12 @@ const ChangeUserRole = ({ name, email, role, userId, onClose, callFunc }) => {
   };
 
   return (
-    <div className="fixed top-0 bottom-0 left-0 right-0 w-full h-full z-10 flex justify-between items-center bg-slate-200 bg-opacity-50">
-      <div className="mx-auto bg-white shadow-md p-4 w-full max-w-sm">
-        <button className="block ml-auto" onClick={onClose}>
+    <div className="fixed top-0 bottom-0 left-0 right-0 w-full h-full z-10 flex justify-between items-center bg-opacity-50  bg-slate-200 border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
+      <div className="mx-auto bg-white shadow-md px-4 py-8 w-full max-w-sm">
+        <button
+          className="block ml-auto bg-red-600 text-white font-bold"
+          onClick={onClose}
+        >
           <IoMdClose />
         </button>
 
