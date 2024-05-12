@@ -16,7 +16,7 @@ const AddProducts = () => {
           Product Name
         </label>
         <input
-          className="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:border-transparent"
           type="text"
           placeholder="Name"
         />
@@ -26,7 +26,7 @@ const AddProducts = () => {
           Brand Name
         </label>
         <input
-          className="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
           type="text"
           placeholder="Name"
         />
@@ -38,7 +38,7 @@ const AddProducts = () => {
             Price
           </label>
           <input
-            className="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
             type="text"
             placeholder="$"
           />
@@ -48,7 +48,7 @@ const AddProducts = () => {
             Selling Price
           </label>
           <input
-            className="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
             type="text"
             placeholder="$"
           />
@@ -80,7 +80,7 @@ const AddProducts = () => {
           Description
         </label>
         <textarea
-          className="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
           type="text"
           placeholder=""
         />
@@ -91,10 +91,10 @@ const AddProducts = () => {
           Product Image
         </label>
         <div className="flex items-center justify-center w-full">
-          <label className="flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-purple-300 group">
+          <label className="flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-blue-300 group">
             <div className="flex flex-col items-center justify-center pt-7">
               <svg
-                className="w-10 h-10 text-purple-400 group-hover:text-purple-600"
+                className="w-10 h-10 text-blue-400 group-hover:text-blue-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -107,7 +107,7 @@ const AddProducts = () => {
                   d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                 ></path>
               </svg>
-              <p className="lowercase text-sm text-gray-400 group-hover:text-purple-600 pt-1 tracking-wider">
+              <p className="lowercase text-sm text-gray-400 group-hover:text-blue-600 pt-1 tracking-wider">
                 Select a photo
               </p>
             </div>
@@ -117,7 +117,7 @@ const AddProducts = () => {
       </div>
 
       <div className="flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5">
-        <button className="w-full bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-10 py-3">
+        <button className="w-full bg-blue-500 hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-10 py-3">
           Upload
         </button>
       </div>
