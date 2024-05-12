@@ -60,7 +60,7 @@ const AllUsers = () => {
                 Created Date
               </th>
               <th scope="col" className="px-6 py-3">
-                <span className="sr-only">Action</span>
+                Action
               </th>
             </tr>
           </thead>
