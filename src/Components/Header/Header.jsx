@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SummaryApi from "../../common";
 import toast from "react-hot-toast";
 import { setUserDetails } from "../../Store/userSlice";
+import ROLE from "../../common/role";
 const Header = () => {
   const user = useSelector((state) => state.user?.user);
   const dispatch = useDispatch();
@@ -65,9 +66,11 @@ const Header = () => {
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link className="hidden md:block" to={"/Admin-dashboard"}>
-                  Admin Dashboard
-                </Link>
+                {user?.role === ROLE.ADMIN && (
+                  <Link className="hidden md:block" to={"/Admin-dashboard"}>
+                    Admin Dashboard
+                  </Link>
+                )}
               </li>
             </ul>
           </div>
