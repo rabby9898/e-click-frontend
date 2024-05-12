@@ -35,7 +35,7 @@ const AllUsers = () => {
     <>
       <div>
         <h1 className="text-2xl md:text-3xl mt-16 mb-8 text-center font-sans font-bold dark:text-gray-200">
-          <span className="border-l-4 border-teal-400 pl-2">
+          <span className="border-l-4 border-[#10b2eb] pl-2">
             All The Active Users
           </span>
         </h1>
