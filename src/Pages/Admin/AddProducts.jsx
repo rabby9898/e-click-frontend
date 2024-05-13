@@ -1,12 +1,35 @@
+import { useState } from "react";
 import productCategory from "../../Api/productCategories";
+import UploadProduct from "../../Api/UploadProduct";
 
 const AddProducts = () => {
+  const [products, setProducts] = useState({
+    productName: "",
+    brandName: "",
+    category: "",
+    productImage: [],
+    description: "",
+    price: "",
+    sellingPrice: "",
+  });
+  const [uploadProdImgInput, setUploadProdImgInput] = useState("");
+
+  const handleUploadProduct = async (e) => {
+    const file = e.target.file[0];
+    setUploadProdImgInput(file.name);
+
+    const uploadImgCloudinary = await UploadProduct(file);
+
+    console.log("upload img info---->", uploadImgCloudinary);
+  };
   return (
     <div className="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-4/5 mx-auto my-8">
       <div className="flex justify-center">
         <div className="flex">
           <h1 className="text-gray-600 font-bold md:text-2xl text-xl">
-            Upload Your Product
+            <span className="border-l-4 border-[#10b2eb] pl-2">
+              Upload Your Product
+            </span>
           </h1>
         </div>
       </div>
@@ -111,7 +134,11 @@ const AddProducts = () => {
                 Select a photo
               </p>
             </div>
-            <input type="file" className="hidden" />
+            <input
+              type="file"
+              className="hidden"
+              onChange={handleUploadProduct}
+            />
           </label>
         </div>
       </div>
