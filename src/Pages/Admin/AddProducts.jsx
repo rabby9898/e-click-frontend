@@ -3,6 +3,7 @@ import { useState } from "react";
 import productCategory from "../../Api/productCategories";
 import UploadProduct from "../../Api/UploadProduct";
 import { MdDelete } from "react-icons/md";
+import DisplayImage from "../../Components/DisplayImage/DisplayImage";
 
 const AddProducts = () => {
   const [products, setProducts] = useState({
@@ -14,11 +15,11 @@ const AddProducts = () => {
     price: "",
     sellingPrice: "",
   });
-  const [uploadProdImgInput, setUploadProdImgInput] = useState("");
+  const [openFullScreenImage, setOpenFullScreenImage] = useState(false);
+  const [fullScreenImage, setFullScreenImage] = useState("");
 
   const handleUploadProduct = async (e) => {
     const file = e.target.files[0];
-    setUploadProdImgInput(file.name);
 
     const uploadImgCloudinary = await UploadProduct(file);
     setProducts((prev) => {
@@ -161,6 +162,10 @@ const AddProducts = () => {
                       width={80}
                       height={80}
                       className="bg-slate-100 border cursor-pointer"
+                      onClick={() => {
+                        setOpenFullScreenImage(true);
+                        setFullScreenImage(el);
+                      }}
                     />
 
                     <div
@@ -184,6 +189,13 @@ const AddProducts = () => {
           Upload
         </button>
       </div>
+      {/***display image full screen */}
+      {openFullScreenImage && (
+        <DisplayImage
+          onClose={() => setOpenFullScreenImage(false)}
+          imgUrl={fullScreenImage}
+        />
+      )}
     </div>
   );
 };
