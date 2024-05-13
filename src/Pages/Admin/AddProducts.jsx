@@ -3,7 +3,8 @@ import productCategory from "../../Api/productCategories";
 import UploadProduct from "../../Api/UploadProduct";
 import { MdDelete } from "react-icons/md";
 import DisplayImage from "../../Components/DisplayImage/DisplayImage";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
+import SummaryApi from "../../common";
 
 const AddProducts = () => {
   const [products, setProducts] = useState({
@@ -57,26 +58,25 @@ const AddProducts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const response = await fetch(SummaryApi.uploadProduct.url,{
-    //   method : SummaryApi.uploadProduct.method,
-    //   credentials : 'include',
-    //   headers : {
-    //     "content-type" : "application/json"
-    //   },
-    //   body : JSON.stringify(data)
-    // })
+    const response = await fetch(SummaryApi.uploadProduct.url, {
+      method: SummaryApi.uploadProduct.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(products),
+    });
 
-    // const responseData = await response.json()
+    const responseData = await response.json();
 
-    // if(responseData.success){
-    //     toast.success(responseData?.message)
-    //     onClose()
-    //     fetchData()
-    // }
+    if (responseData.success) {
+      toast.success(responseData?.message);
+      e.target.reset();
+    }
 
-    // if(responseData.error){
-    //   toast.error(responseData?.message)
-    // }
+    if (responseData.error) {
+      toast.error(responseData?.message);
+    }
   };
   return (
     <div className="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-4/5 mx-auto my-8">
@@ -102,6 +102,7 @@ const AddProducts = () => {
             name="productName"
             value={products.productName}
             onChange={handleOnChange}
+            required
           />
         </div>
         <div className="grid grid-cols-1 mt-5 mx-7">
@@ -115,6 +116,7 @@ const AddProducts = () => {
             name="brandName"
             value={products.brandName}
             onChange={handleOnChange}
+            required
           />
         </div>
 
@@ -125,11 +127,12 @@ const AddProducts = () => {
             </label>
             <input
               className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
-              type="text"
+              type="number"
               placeholder="$"
               name="price"
               value={products.price}
               onChange={handleOnChange}
+              required
             />
           </div>
           <div className="grid grid-cols-1">
@@ -138,11 +141,12 @@ const AddProducts = () => {
             </label>
             <input
               className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
-              type="text"
+              type="number"
               placeholder="$"
               name="sellingPrice"
               value={products.sellingPrice}
               onChange={handleOnChange}
+              required
             />
           </div>
         </div>
@@ -158,7 +162,9 @@ const AddProducts = () => {
             value={products.category}
             onChange={handleOnChange}
           >
-            <option value={""}>Select Category</option>
+            <option value={""} required>
+              Select Category
+            </option>
             {productCategory.map((el, index) => {
               return (
                 <option value={el.value} key={el.value + index}>
@@ -180,6 +186,7 @@ const AddProducts = () => {
             name="description"
             value={products.description}
             onChange={handleOnChange}
+            required
           />
         </div>
 
@@ -212,6 +219,7 @@ const AddProducts = () => {
                 type="file"
                 className="hidden"
                 onChange={handleUploadProduct}
+                required
               />
             </label>
           </div>
