@@ -30,6 +30,17 @@ const AddProducts = () => {
     });
     console.log("upload img info---->", uploadImgCloudinary);
   };
+  const handleDeleteProductImage = async (index) => {
+    const newProductImg = [...products.productImage];
+    newProductImg.splice(index, 1);
+
+    setProducts((prev) => {
+      return {
+        ...prev,
+        productImage: [...newProductImg],
+      };
+    });
+  };
   return (
     <div className="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-4/5 mx-auto my-8">
       <div className="flex justify-center">
