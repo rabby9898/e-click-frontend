@@ -15,7 +15,7 @@ const AddProducts = () => {
   const [uploadProdImgInput, setUploadProdImgInput] = useState("");
 
   const handleUploadProduct = async (e) => {
-    const file = e.target.file[0];
+    const file = e.target.files[0];
     setUploadProdImgInput(file.name);
 
     const uploadImgCloudinary = await UploadProduct(file);

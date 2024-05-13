@@ -1,8 +1,14 @@
-const url = `https://api.cloudinary.com/v1_1/${process.env.UPLOAD_IMG_CLOUDINARY}/image/upload`;
+// const url = `https://api.cloudinary.com/v1_1/${
+//   import.meta.env.VITE_UPLOAD_IMG_CLOUDINARY
+// }/image/upload`;
+// dz8xyc0wo
+
+const url = `https://api.cloudinary.com/v1_1/dz8xyc0wo/image/upload`;
+
 const UploadProduct = async (image) => {
-  const formData = new formData();
+  const formData = new FormData();
   formData.append("file", image);
-  formData.append("upload_preset", " eclick-product");
+  formData.append("upload_preset", "eclick-product");
 
   const dataResponse = await fetch(url, {
     method: "post",
