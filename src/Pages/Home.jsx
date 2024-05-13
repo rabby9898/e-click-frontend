@@ -1,7 +1,9 @@
+import Category from "../Components/Category/Category";
+
 const Home = () => {
   return (
-    <div className="container">
-      <h1>This is Home</h1>
+    <div className="container mx-auto">
+      <Category />
     </div>
   );
 };
