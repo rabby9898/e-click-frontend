@@ -1,4 +1,4 @@
-import { FaRegCircleUser, FaUsers } from "react-icons/fa6";
+import { FaBorderAll, FaRegCircleUser, FaUsers } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { IoBagAddOutline } from "react-icons/io5";
@@ -51,6 +51,15 @@ const AdminDashboard = () => {
               >
                 <IoBagAddOutline />
                 <span className="ms-3">Add Product</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"all-products"}
+                className="flex items-center text-base p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <FaBorderAll />
+                <span className="ms-3">All Products</span>
               </Link>
             </li>
           </ul>
