@@ -21,7 +21,7 @@ const Category = () => {
   }, []);
 
   return (
-    <div className="container w-full  p-4">
+    <div className="container w-full  p-4 my-10">
       <div className="flex items-center gap-4 justify-between overflow-scroll scrollbar-none w-full mx-auto">
         {loading
           ? categoryLoading.map((el, index) => {
@@ -35,7 +35,7 @@ const Category = () => {
           : categoryProduct.map((product) => {
               return (
                 <Link
-                  to={"/product-category?category=" + product?.category}
+                  to={"/product-category/" + product?.category}
                   className="cursor-pointer"
                   key={product?.category}
                 >
