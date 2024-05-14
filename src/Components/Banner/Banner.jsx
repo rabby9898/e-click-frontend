@@ -29,9 +29,7 @@ const Banner = () => {
 
   // Map image URLs to SwiperSlide components
   const swiperSlides = imageUrls.map((url, index) => (
-    <SwiperSlide className="" key={index}>
-      {createImgTag(url)}
-    </SwiperSlide>
+    <SwiperSlide key={index}>{createImgTag(url)}</SwiperSlide>
   ));
 
   return (
