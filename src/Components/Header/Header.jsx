@@ -107,6 +107,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <hr className="h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-[#dc2626] to-transparent opacity-70 dark:opacity-100" />
     </div>
   );
 };
