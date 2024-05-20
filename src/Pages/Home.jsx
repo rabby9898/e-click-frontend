@@ -1,6 +1,6 @@
 import Banner from "../Components/Banner/Banner";
 import Category from "../Components/Category/Category";
-import HorizontalCardProduct from "../Components/HorizontalProductCard/HorizontalProductCard";
+import HorizontalCardProduct from "../Components/HorizontalProductCard/HorizontalCardProduct";
 import VerticalCardProduct from "../Components/VerticalCardProduct/VerticalCardProduct";
 
 const Home = () => {
