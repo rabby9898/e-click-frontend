@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import scrollTop from "../../Api/ScrollTop";
 import fetchCategoryProduct from "../../Api/fetchCategoryProduct";
+import Context from "../../Context/Context";
+import addToCart from "../../Api/addToCart";
 
 const RecommendedProduct = ({ category, heading }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const loadingList = new Array(13).fill(null);
 
-  //   const { fetchUserAddToCart } = useContext(Context);
+  const { fetchUserAddToCart } = useContext(Context);
 
-  //   const handleAddToCart = async (e, id) => {
-  //     await addToCart(e, id);
-  //     fetchUserAddToCart();
-  //   };
+  const handleAddToCart = async (e, id) => {
+    await addToCart(e, id);
+    fetchUserAddToCart();
+  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -84,7 +86,7 @@ const RecommendedProduct = ({ category, heading }) => {
                     </div>
                     <button
                       className="text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full"
-                      //   onClick={(e) => handleAddToCart(e, product?._id)}
+                      onClick={(e) => handleAddToCart(e, product?._id)}
                     >
                       Add to Cart
                     </button>
