@@ -1,4 +1,4 @@
-const addToCart = (e, id) => {
+const addToCart = (e) => {
   e?.stopPropagation();
   e.preventDefault();
 };
