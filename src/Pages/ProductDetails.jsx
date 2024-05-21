@@ -3,9 +3,7 @@ import { useParams } from "react-router-dom";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
 import SummaryApi from "../common";
-import CategoryProduct from "./CategoryProduct";
-import Category from "../Components/Category/Category";
-import VerticalCardProduct from "../Components/VerticalCardProduct/VerticalCardProduct";
+import RecommendedProduct from "../Components/RecommendedProduct/RecommendedProduct";
 const ProductDetails = () => {
   const [data, setData] = useState({
     productName: "",
@@ -182,8 +180,8 @@ const ProductDetails = () => {
             </div>
 
             <div className="flex items-center gap-2 text-2xl lg:text-3xl font-medium my-1">
-              <p className="text-red-600">{data.sellingPrice}</p>
-              <p className="text-slate-400 line-through">{data.price}</p>
+              <p className="text-red-600">{data.price}</p>
+              <p className="text-slate-400 line-through">{data.sellingPrice}</p>
             </div>
 
             <div className="flex items-center gap-3 my-2">
@@ -210,7 +208,7 @@ const ProductDetails = () => {
       </div>
 
       {data.category && (
-        <VerticalCardProduct
+        <RecommendedProduct
           category={data?.category}
           heading={"Recommended Product"}
         />
