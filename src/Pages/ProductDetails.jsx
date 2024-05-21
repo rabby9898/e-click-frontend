@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { FaStar, FaStarHalf } from "react-icons/fa";
+
 import SummaryApi from "../common";
 const ProductDetails = () => {
   const [data, setData] = useState({
@@ -17,8 +19,8 @@ const ProductDetails = () => {
   const [activeImage, setActiveImage] = useState("");
   const fetchProductDetails = async () => {
     setLoading(true);
-    const response = await fetch(SummaryApi.productDetails.url, {
-      method: SummaryApi.productDetails.method,
+    const response = await fetch(SummaryApi.ProductDetails.url, {
+      method: SummaryApi.ProductDetails.method,
       headers: {
         "content-type": "application/json",
       },
@@ -37,7 +39,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     fetchProductDetails();
-  }, []);
+  }, [params]);
 
   const handleMouseEnterProduct = (imageURL) => {
     setActiveImage(imageURL);
