@@ -7,11 +7,13 @@ import SummaryApi from "../../common";
 import toast from "react-hot-toast";
 import { setUserDetails } from "../../Store/userSlice";
 import ROLE from "../../common/role";
+import { useContext } from "react";
+import Context from "../../Context/Context";
 const Header = () => {
   const user = useSelector((state) => state.user?.user);
   const dispatch = useDispatch();
   console.log(user);
-
+  const context = useContext(Context);
   const handleLogout = async () => {
     const fetchData = await fetch(SummaryApi.user_logout.url, {
       method: SummaryApi.user_logout.method,
@@ -82,7 +84,7 @@ const Header = () => {
               </span>
 
               <div className="bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3">
-                <p className="text-sm">0</p>
+                <p className="text-sm">{context?.cartProductCount}</p>
               </div>
             </Link>
           </div>

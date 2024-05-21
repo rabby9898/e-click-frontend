@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SummaryApi from "../common";
 import Context from "../Context/Context";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "../Store/userSlice";
 
 const MainLayout = () => {
+  const [cartProductCount, setCartProductCount] = useState(0);
   const dispatch = useDispatch();
   const fetchUserDetails = async () => {
     const dataResponse = await fetch(SummaryApi.current_user.url, {
@@ -22,9 +23,22 @@ const MainLayout = () => {
     console.log(dataApi);
   };
 
+  const fetchUserAddToCart = async () => {
+    const dataResponse = await fetch(SummaryApi.countAddToCartProduct.url, {
+      method: SummaryApi.countAddToCartProduct.method,
+      credentials: "include",
+    });
+
+    const dataApi = await dataResponse.json();
+
+    setCartProductCount(dataApi?.data?.count);
+  };
+
   useEffect(() => {
-    // user Details info
+    /**user Details */
     fetchUserDetails();
+    /**user Details cart product */
+    fetchUserAddToCart();
   }, []);
 
   return (
@@ -32,6 +46,8 @@ const MainLayout = () => {
       <Context.Provider
         value={{
           fetchUserDetails, //user details data fetch
+          fetchUserAddToCart,
+          cartProductCount,
         }}
       >
         <Header />
