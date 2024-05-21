@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
 import SummaryApi from "../common";
+import CategoryProduct from "./CategoryProduct";
+import Category from "../Components/Category/Category";
+import VerticalCardProduct from "../Components/VerticalCardProduct/VerticalCardProduct";
 const ProductDetails = () => {
   const [data, setData] = useState({
     productName: "",
@@ -116,7 +119,7 @@ const ProductDetails = () => {
               </div>
             ) : (
               <div className="flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full">
-                {data?.productImage?.map((imgURL, index) => {
+                {data?.productImage?.map((imgURL) => {
                   return (
                     <div
                       className="h-20 w-20 bg-slate-200 rounded p-1"
@@ -206,12 +209,12 @@ const ProductDetails = () => {
         )}
       </div>
 
-      {/* {data.category && (
-        <CategroyWiseProductDisplay
+      {data.category && (
+        <VerticalCardProduct
           category={data?.category}
           heading={"Recommended Product"}
         />
-      )} */}
+      )}
     </div>
   );
 };
