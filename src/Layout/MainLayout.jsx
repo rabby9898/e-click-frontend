@@ -35,7 +35,7 @@ const MainLayout = () => {
         }}
       >
         <Header />
-        <main className="min-h-[calc(100vh-140px)] bg-white">
+        <main className="min-h-[calc(100vh-140px)] bg-white pt-20">
           <Outlet />
         </main>
         <Footer />
