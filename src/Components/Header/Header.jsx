@@ -83,9 +83,11 @@ const Header = () => {
                 <FaShoppingCart />
               </span>
 
-              <div className="bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3">
-                <p className="text-sm">{context?.cartProductCount}</p>
-              </div>
+              {user && (
+                <div className="bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3">
+                  <p className="text-sm">{context?.cartProductCount}</p>
+                </div>
+              )}
             </Link>
           </div>
 
