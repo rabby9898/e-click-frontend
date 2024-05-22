@@ -57,6 +57,10 @@ const SummaryApi = {
     url: `${backendDomain}/api/countAddToCartProduct`,
     method: "get",
   },
+  addToCartView: {
+    url: `${backendDomain}/api/cart-view`,
+    method: "get",
+  },
 };
 
 export default SummaryApi;
