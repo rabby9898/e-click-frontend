@@ -1,5 +1,5 @@
 import { GrSearch } from "react-icons/gr";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,7 @@ import SummaryApi from "../../common";
 import toast from "react-hot-toast";
 import { setUserDetails } from "../../Store/userSlice";
 import ROLE from "../../common/role";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Context from "../../Context/Context";
 const Header = () => {
   const user = useSelector((state) => state.user?.user);
@@ -15,6 +15,10 @@ const Header = () => {
   console.log(user);
   const context = useContext(Context);
   const navigate = useNavigate();
+  const searchInput = useLocation();
+  const URLSearch = new URLSearchParams(searchInput?.search);
+  const searchQuery = URLSearch.getAll("q");
+  const [search, setSearch] = useState(searchQuery);
 
   /***Logout functionality***/
   const handleLogout = async () => {
@@ -35,6 +39,7 @@ const Header = () => {
   /***Search functionality***/
   const handleSearch = (e) => {
     const { value } = e.target;
+    setSearch(value);
     if (value) {
       navigate(`/search?q=${value}`);
     } else {
@@ -56,6 +61,7 @@ const Header = () => {
             placeholder="search product here..."
             className="w-full px-3 outline-none"
             onChange={handleSearch}
+            value={search}
           />
           <div className="text-lg min-w-[50px] h-8 bg-red-600 flex items-center justify-center rounded-r-full text-white">
             <GrSearch />
