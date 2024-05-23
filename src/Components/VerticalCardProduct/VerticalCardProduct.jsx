@@ -99,10 +99,10 @@ const VerticalCardProduct = ({ category, heading }) => {
                     </p>
                     <div className="flex gap-3">
                       <p className="text-red-600 font-medium">
-                        ${product?.sellingPrice}
+                        ${product?.price}
                       </p>
                       <p className="text-slate-500 line-through">
-                        ${product?.price}
+                        ${product?.sellingPrice}
                       </p>
                     </div>
                     <button
