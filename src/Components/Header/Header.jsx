@@ -1,5 +1,5 @@
 import { GrSearch } from "react-icons/gr";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,9 @@ const Header = () => {
   const dispatch = useDispatch();
   console.log(user);
   const context = useContext(Context);
+  const navigate = useNavigate();
+
+  /***Logout functionality***/
   const handleLogout = async () => {
     const fetchData = await fetch(SummaryApi.user_logout.url, {
       method: SummaryApi.user_logout.method,
@@ -26,6 +29,16 @@ const Header = () => {
     }
     if (data.error) {
       toast.error(data.message);
+    }
+  };
+
+  /***Search functionality***/
+  const handleSearch = (e) => {
+    const { value } = e.target;
+    if (value) {
+      navigate(`/search?q=${value}`);
+    } else {
+      navigate(`/search`);
     }
   };
   return (
@@ -42,6 +55,7 @@ const Header = () => {
             type="text"
             placeholder="search product here..."
             className="w-full px-3 outline-none"
+            onChange={handleSearch}
           />
           <div className="text-lg min-w-[50px] h-8 bg-red-600 flex items-center justify-center rounded-r-full text-white">
             <GrSearch />
