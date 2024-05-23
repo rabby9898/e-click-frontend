@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SummaryApi from "../common";
+import Context from "../Context/Context";
 
 const Cart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const loadingCart = new Array(4).fill(null);
-
+  const context = useContext(Context);
   const fetchData = async () => {
     const response = await fetch(SummaryApi.addToCartView.url, {
       method: SummaryApi.addToCartView.method,
@@ -73,7 +74,25 @@ const Cart = () => {
       }
     }
   };
+  const deleteCartProduct = async (id) => {
+    const response = await fetch(SummaryApi.deleteCartProduct.url, {
+      method: SummaryApi.deleteCartProduct.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        _id: id,
+      }),
+    });
 
+    const responseData = await response.json();
+
+    if (responseData.success) {
+      fetchData();
+      context.fetchUserAddToCart();
+    }
+  };
   return <div>Cart</div>;
 };
 
