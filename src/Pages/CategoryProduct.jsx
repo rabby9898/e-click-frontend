@@ -5,7 +5,6 @@ import productCategory from "../Api/productCategories";
 import SearchCard from "../Components/SearchCard";
 
 const CategoryProduct = () => {
-  const params = useParams();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -22,6 +21,7 @@ const CategoryProduct = () => {
   const [sortBy, setSortBy] = useState("");
   /***Data fetching****/
   const fetchData = async () => {
+    setLoading(true);
     const response = await fetch(SummaryApi.filterProduct.url, {
       method: SummaryApi.filterProduct.method,
       headers: {
@@ -31,7 +31,7 @@ const CategoryProduct = () => {
         category: filterCategoryList,
       }),
     });
-
+    setLoading(false);
     const dataResponse = await response.json();
     setData(dataResponse?.data || []);
   };
