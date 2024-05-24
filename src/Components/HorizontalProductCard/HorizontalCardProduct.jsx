@@ -95,11 +95,11 @@ const HorizontalCardProduct = ({ category, heading }) => {
                     <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black">
                       {product?.productName}
                     </h2>
-                    <p className="capitalize text-slate-500">
-                      {product?.category}
-                    </p>
+                    <h4 className="font-medium text-sm md:text-base text-ellipsis line-clamp-1 text-gray-400">
+                      {product?.brandName}
+                    </h4>
                     <div className="flex gap-3">
-                      <p className="text-red-600 font-medium">
+                      <p className="text-slate-900 font-bold">
                         ${product?.price}
                       </p>
                       <p className="text-slate-500 line-through">
@@ -110,7 +110,9 @@ const HorizontalCardProduct = ({ category, heading }) => {
                       className="text-sm bg-slate-900 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 text-white px-3 py-0.5 rounded-lg"
                       onClick={(e) => handleAddToCart(e, product?._id)}
                     >
-                      <FaShoppingCart />
+                      <span className="flex justify-center items-center gap-2">
+                        <FaShoppingCart /> Add to Cart
+                      </span>
                     </button>
                   </div>
                 </Link>

@@ -82,28 +82,22 @@ const VerticalCardProduct = ({ category, heading }) => {
               return (
                 <Link
                   to={"product/" + product?._id}
-                  className="w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-xl shadow-xl my-6 border border-gray-200 hover:bg-gray-100"
+                  className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-xl shadow-xl my-6 border border-gray-200 hover:bg-gray-100 px-4"
                 >
-                  <div className="bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center rounded-t-xl">
+                  <div className="bg-slate-200 h-48 mt-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center rounded-xl">
                     <img
                       src={product.productImage[0]}
                       className="object-scale-down h-full  hover:scale-110 transition-all mix-blend-multiply "
                     />
                   </div>
                   <div className="p-4 grid gap-3 py-8">
-                    <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-slate-900">
+                    <h2 className="font-medium text-base md:text-xl text-ellipsis line-clamp-1 text-slate-900">
                       {product?.productName}
                     </h2>
-                    <div className="flex justify-between items-center">
-                      <h4 className="font-medium text-base md:text-base text-ellipsis line-clamp-1 text-gray-400">
-                        Brand: {product?.brandName}
-                      </h4>
 
-                      {/* <p className="capitalize text-slate-500 text-base">
-                        {product?.category}
-                      </p> */}
-                    </div>
-
+                    <h4 className="flex justify-between items-center font-medium text-base md:text-base text-ellipsis line-clamp-1 text-gray-400 my-1">
+                      <span>Brand</span> {product?.brandName}
+                    </h4>
                     <p className="my-4">
                       <span className="text-3xl font-bold text-slate-900">
                         ${product?.price}
