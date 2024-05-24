@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import fetchCategoryProduct from "../../Api/fetchCategoryProduct";
 import addToCart from "../../Api/addToCart";
 import Context from "../../Context/Context";
+import { FaShoppingCart } from "react-icons/fa";
 
 const HorizontalCardProduct = ({ category, heading }) => {
   const [data, setData] = useState([]);
@@ -106,10 +107,10 @@ const HorizontalCardProduct = ({ category, heading }) => {
                       </p>
                     </div>
                     <button
-                      className="text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full"
+                      className="text-sm bg-slate-900 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 text-white px-3 py-0.5 rounded-lg"
                       onClick={(e) => handleAddToCart(e, product?._id)}
                     >
-                      Add to Cart
+                      <FaShoppingCart />
                     </button>
                   </div>
                 </Link>
