@@ -80,11 +80,11 @@ const CategoryProduct = () => {
     setSortBy(value);
 
     if (value === "asc") {
-      setData((prev) => prev.sort((a, b) => a.sellingPrice - b.sellingPrice));
+      setData((prev) => prev.sort((a, b) => a.price - b.price));
     }
 
     if (value === "dsc") {
-      setData((prev) => prev.sort((a, b) => b.sellingPrice - a.sellingPrice));
+      setData((prev) => prev.sort((a, b) => b.price - a.price));
     }
   };
 
@@ -101,7 +101,7 @@ const CategoryProduct = () => {
               Sort by
             </h3>
 
-            <form className="text-sm flex flex-col gap-2 py-2">
+            <form className="text-sm flex flex-col gap-2 py-2 mb-5">
               <div className="flex items-center gap-3">
                 <input
                   type="radio"
@@ -110,7 +110,9 @@ const CategoryProduct = () => {
                   onChange={handleOnChangeSortBy}
                   value={"asc"}
                 />
-                <label>Price - Low to High</label>
+                <label className="text-base my-1">
+                  Price - <span className="text-xs">Low to</span> High
+                </label>
               </div>
 
               <div className="flex items-center gap-3">
@@ -121,7 +123,9 @@ const CategoryProduct = () => {
                   onChange={handleOnChangeSortBy}
                   value={"dsc"}
                 />
-                <label>Price - High to Low</label>
+                <label className="text-base">
+                  Price - High to <span className="text-xs">Low</span>
+                </label>
               </div>
             </form>
           </div>
@@ -144,7 +148,10 @@ const CategoryProduct = () => {
                       id={categoryName?.value}
                       onChange={handleSelectCategory}
                     />
-                    <label htmlFor={categoryName?.value}>
+                    <label
+                      htmlFor={categoryName?.value}
+                      className="text-base my-1"
+                    >
                       {categoryName?.label}
                     </label>
                   </div>
