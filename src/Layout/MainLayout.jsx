@@ -51,10 +51,10 @@ const MainLayout = () => {
         }}
       >
         <Header />
-        <main className="min-h-[calc(100vh-140px)] bg-white pt-20">
+        <main className="min-h-[calc(100vh-140px)] bg-white pt-20 font-ubuntu">
           <Outlet />
         </main>
-        <Footer />
+        <Footer className="font-ubuntu" />
       </Context.Provider>
     </>
   );

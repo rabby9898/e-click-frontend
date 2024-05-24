@@ -32,17 +32,17 @@ const AllUsers = () => {
     fetchAllUsers();
   }, []);
   return (
-    <>
+    <div className="">
       <div>
         <h1 className="text-2xl md:text-3xl mt-16 mb-8 text-center font-sans font-bold dark:text-gray-200">
-          <span className="border-l-4 border-[#10b2eb] pl-2">
+          <span className="border-l-4 border-slate-900 pl-2">
             All The Active Users
           </span>
         </h1>
       </div>
       <div className="relative shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-white uppercase bg-[#10b2eb] dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-white uppercase bg-slate-900 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-2 py-3">
                 Sr.
@@ -107,7 +107,7 @@ const AllUsers = () => {
           />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

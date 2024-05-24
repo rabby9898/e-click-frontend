@@ -6,6 +6,7 @@ import fetchCategoryProduct from "../../Api/fetchCategoryProduct";
 import addToCart from "../../Api/addToCart";
 import Context from "../../Context/Context";
 import { FaShoppingCart } from "react-icons/fa";
+import scrollTop from "../../Api/ScrollTop";
 const VerticalCardProduct = ({ category, heading }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -83,6 +84,7 @@ const VerticalCardProduct = ({ category, heading }) => {
                 <Link
                   to={"product/" + product?._id}
                   className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-xl shadow-xl my-6 border border-gray-200 hover:bg-gray-100 px-0 md:px-4"
+                  onClick={scrollTop}
                 >
                   <div className="bg-slate-200 h-48 mt-0 md:mt-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center rounded-t-xl md:rounded-xl">
                     <img

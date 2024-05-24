@@ -83,7 +83,7 @@ const AddProducts = () => {
       <div className="flex justify-center">
         <div className="flex">
           <h1 className="text-gray-600 font-bold md:text-2xl text-xl">
-            <span className="border-l-4 border-[#10b2eb] pl-2">
+            <span className="border-l-4 border-slate-900 pl-2">
               Upload Your Product
             </span>
           </h1>
@@ -96,7 +96,7 @@ const AddProducts = () => {
             Product Name
           </label>
           <input
-            className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:border-transparent"
+            className="py-2 px-3 rounded-lg border-2 border-slate-300 mt-1 focus:outline-none focus:ring-2 focus:border-transparent"
             type="text"
             placeholder="Name"
             name="productName"
@@ -110,7 +110,7 @@ const AddProducts = () => {
             Brand Name
           </label>
           <input
-            className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
+            className="py-2 px-3 rounded-lg border-2 border-slate-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
             type="text"
             placeholder="Name"
             name="brandName"
@@ -126,7 +126,7 @@ const AddProducts = () => {
               Price
             </label>
             <input
-              className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
+              className="py-2 px-3 rounded-lg border-2 border-slate-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
               type="number"
               placeholder="$"
               name="price"
@@ -140,7 +140,7 @@ const AddProducts = () => {
               Selling Price
             </label>
             <input
-              className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
+              className="py-2 px-3 rounded-lg border-2 border-slate-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
               type="number"
               placeholder="$"
               name="sellingPrice"
@@ -180,7 +180,7 @@ const AddProducts = () => {
             Description
           </label>
           <textarea
-            className="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
+            className="py-2 px-3 rounded-lg border-2 border-slate-300 mt-1 focus:outline-none focus:ring-2  focus:border-transparent"
             type="text"
             placeholder=""
             name="description"
@@ -195,7 +195,7 @@ const AddProducts = () => {
             Product Image
           </label>
           <div className="flex items-center justify-center w-full">
-            <label className="flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-blue-300 group">
+            <label className="flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-slate-300 group">
               <div className="flex flex-col items-center justify-center pt-7">
                 <svg
                   className="w-10 h-10 text-blue-400 group-hover:text-blue-600"
@@ -263,7 +263,7 @@ const AddProducts = () => {
         <div className="flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5">
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-10 py-3"
+            className="w-full bg-slate-900 hover:bg-slate-700 rounded-lg shadow-xl font-medium text-white px-10 py-3"
           >
             Upload
           </button>

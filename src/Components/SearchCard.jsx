@@ -3,6 +3,7 @@ import Context from "../Context/Context";
 import addToCart from "../Api/addToCart";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import scrollTop from "../Api/ScrollTop";
 
 const SearchCard = ({ loading, data = [] }) => {
   const loadingList = new Array(13).fill(null);
@@ -40,6 +41,7 @@ const SearchCard = ({ loading, data = [] }) => {
                 key={index}
                 to={"/product/" + product?._id}
                 className="w-full min-w-[230px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-xl shadow-xl my-6 border border-gray-200 hover:bg-gray-100 p-2 md:p-4"
+                onClick={scrollTop}
               >
                 <div className="bg-slate-200 h-48 min-w-[230px] md:min-w-[145px] flex justify-center items-center rounded-t-xl md:rounded-xl">
                   <img
