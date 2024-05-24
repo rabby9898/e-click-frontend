@@ -82,9 +82,9 @@ const VerticalCardProduct = ({ category, heading }) => {
               return (
                 <Link
                   to={"product/" + product?._id}
-                  className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-xl shadow-xl my-6 border border-gray-200 hover:bg-gray-100 px-4"
+                  className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-xl shadow-xl my-6 border border-gray-200 hover:bg-gray-100 px-0 md:px-4"
                 >
-                  <div className="bg-slate-200 h-48 mt-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center rounded-xl">
+                  <div className="bg-slate-200 h-48 mt-0 md:mt-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center rounded-t-xl md:rounded-xl">
                     <img
                       src={product.productImage[0]}
                       className="object-scale-down h-full  hover:scale-110 transition-all mix-blend-multiply "

@@ -13,7 +13,7 @@ const SearchCard = ({ loading, data = [] }) => {
     fetchUserAddToCart();
   };
   return (
-    <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,300px))] justify-center md:justify-between md:gap-4 overflow-x-scroll scrollbar-none transition-all">
+    <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,300px))] justify-center md:justify-evenly md:gap-4 overflow-x-scroll scrollbar-none transition-all">
       {loading
         ? loadingList.map((product, index) => {
             return (
@@ -22,7 +22,7 @@ const SearchCard = ({ loading, data = [] }) => {
                 className="w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow "
               >
                 <div className="bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center animate-pulse"></div>
-                <div className="p-4 grid gap-3">
+                <div className="p-0 md:p-4 grid gap-3">
                   <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black p-1 py-2 animate-pulse rounded-full bg-slate-200"></h2>
                   <p className="capitalize text-slate-500 p-1 animate-pulse rounded-full bg-slate-200  py-2"></p>
                   <div className="flex gap-3">
@@ -39,15 +39,15 @@ const SearchCard = ({ loading, data = [] }) => {
               <Link
                 key={index}
                 to={"/product/" + product?._id}
-                className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-xl shadow-xl my-6 border border-gray-200 hover:bg-gray-100 px-4"
+                className="w-full min-w-[230px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-xl shadow-xl my-6 border border-gray-200 hover:bg-gray-100 p-2 md:p-4"
               >
-                <div className="bg-slate-200 h-48 mt-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center rounded-xl">
+                <div className="bg-slate-200 h-48 min-w-[230px] md:min-w-[145px] flex justify-center items-center rounded-t-xl md:rounded-xl">
                   <img
                     src={product.productImage[0]}
-                    className="object-scale-down h-full  hover:scale-110 transition-all mix-blend-multiply "
+                    className="w-full object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply"
                   />
                 </div>
-                <div className="p-4 grid gap-3 py-8">
+                <div className="p-2 md:p-4 grid gap-3 py-8">
                   <h2 className="font-medium text-base md:text-xl text-ellipsis line-clamp-1 text-slate-900">
                     {product?.productName}
                   </h2>
@@ -56,7 +56,7 @@ const SearchCard = ({ loading, data = [] }) => {
                     <span>Brand</span> {product?.brandName}
                   </h4>
                   <p className="my-4">
-                    <span className="text-3xl font-bold text-slate-900">
+                    <span className="text-lg md:text-3xl font-bold text-slate-900">
                       ${product?.price}
                     </span>
                     <span className="text-sm text-slate-900 line-through">
@@ -66,7 +66,7 @@ const SearchCard = ({ loading, data = [] }) => {
                   </p>
 
                   <button
-                    className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    className="flex items-center justify-center rounded-md bg-slate-900 px-0 md:px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
                     onClick={(e) => handleAddToCart(e, product?._id)}
                   >
                     <span className="flex justify-center items-center gap-2">
