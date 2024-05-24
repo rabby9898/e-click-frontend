@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import SummaryApi from "../common";
 import Context from "../Context/Context";
 import { MdDelete } from "react-icons/md";
+import PaymentForm from "../Components/CardForm/PaymentForm";
 const Cart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -117,7 +118,7 @@ const Cart = () => {
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4">
+      <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4 shadow-xl">
         {/***view product */}
         <div className="w-full max-w-3xl">
           {loading
@@ -133,9 +134,9 @@ const Cart = () => {
                 return (
                   <div
                     key={product?._id + "Add To Cart Loading"}
-                    className="w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]"
+                    className="w-full bg-white h-40 my-2 border border-slate-300 shadow-xl rounded-md grid grid-cols-[128px,1fr]"
                   >
-                    <div className="w-32 h-32 bg-slate-200">
+                    <div className="w-32 h-40 bg-slate-200">
                       <img
                         src={product?.productId?.productImage[0]}
                         className="w-full h-full object-scale-down mix-blend-multiply"
@@ -144,21 +145,21 @@ const Cart = () => {
                     <div className="px-4 py-2 relative">
                       {/**delete product */}
                       <div
-                        className="absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer"
+                        className="absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-900 hover:text-white cursor-pointer"
                         onClick={() => deleteCartProduct(product?._id)}
                       >
-                        <MdDelete />
+                        <MdDelete className="text-xl" />
                       </div>
 
-                      <h2 className="text-lg lg:text-xl text-ellipsis line-clamp-1">
+                      <h2 className="text-lg lg:text-xl text-ellipsis line-clamp-1 my-3">
                         {product?.productId?.productName}
                       </h2>
-                      <p className="capitalize text-slate-500">
+                      <p className="capitalize text-slate-500 my-3">
                         {product?.productId.category}
                       </p>
                       <div className="flex items-center justify-between">
-                        <p className="text-red-600 font-medium text-lg">
-                          {product?.productId?.price}
+                        <p className="text-slate-900 font-medium text-lg">
+                          ${product?.productId?.price}
                         </p>
                         <p className="text-slate-600 font-semibold text-lg">
                           {product?.productId?.price * product?.quantity}
@@ -166,7 +167,7 @@ const Cart = () => {
                       </div>
                       <div className="flex items-center gap-3 mt-1">
                         <button
-                          className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                          className="border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white w-6 h-6 flex justify-center items-center rounded "
                           onClick={() =>
                             decreaseQty(product?._id, product?.quantity)
                           }
@@ -175,7 +176,7 @@ const Cart = () => {
                         </button>
                         <span>{product?.quantity}</span>
                         <button
-                          className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                          className="border border-slate-900 text-slate-900 hover:bg-slate-500 hover:text-white w-6 h-6 flex justify-center items-center rounded "
                           onClick={() =>
                             increaseQty(product?._id, product?.quantity)
                           }
@@ -190,14 +191,67 @@ const Cart = () => {
         </div>
 
         {/***summary  */}
-        <div className="mt-5 lg:mt-0 w-full max-w-sm">
+        <div className="mt-5 lg:mt-0 w-full max-w-sm h-auto">
+          {/* delivery method */}
+          <div>
+            <p className="mt-8 text-lg font-medium">Shipping Methods</p>
+            <form className="mt-5 grid gap-6">
+              <div className="relative">
+                <input
+                  className="peer hidden"
+                  id="radio_1"
+                  type="radio"
+                  name="radio"
+                  checked
+                />
+                <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4">
+                  <img
+                    className="w-14 object-contain"
+                    src="https://i.ibb.co/YpTZL1G/hidden-arrow-fedex-logo.jpg"
+                    alt=""
+                  />
+                  <div className="ml-5">
+                    <span className="mt-2 font-semibold">Fedex Delivery</span>
+                    <p className="text-slate-500 text-sm leading-6">
+                      Delivery: 2-4 Days
+                    </p>
+                  </div>
+                </label>
+              </div>
+              <div className="relative">
+                <input
+                  className="peer hidden"
+                  id="radio_2"
+                  type="radio"
+                  name="radio"
+                  checked
+                />
+                <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4">
+                  <img
+                    className="w-14 object-contain"
+                    src="https://i.ibb.co/0ZQfW0N/images.png"
+                    alt=""
+                  />
+                  <div className="ml-5">
+                    <span className="mt-2 font-semibold">DHL Delivery</span>
+                    <p className="text-slate-500 text-sm leading-6">
+                      Delivery: 2-4 Days
+                    </p>
+                  </div>
+                </label>
+              </div>
+            </form>
+          </div>
+
           {loading ? (
             <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
           ) : (
-            <div className="h-36 bg-white">
-              <h2 className="text-white bg-red-600 px-4 py-1">Summary</h2>
-              <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
-                <p>Quantity</p>
+            <div className="h-36 bg-white mt-10">
+              <h2 className="text-white bg-slate-900 px-4 py-2">Summary</h2>
+              <div className="flex items-center justify-between px-4 py-5 gap-2 font-medium text-lg text-slate-600">
+                <p className="">Quantity</p>
                 <p>{totalQty}</p>
               </div>
 
@@ -206,9 +260,23 @@ const Cart = () => {
                 <p>{totalPrice}</p>
               </div>
 
-              <button className="bg-blue-600 p-2 text-white w-full mt-2">
-                Payment
-              </button>
+              <label
+                htmlFor="my_modal_7"
+                className="btn bg-blue-600 p-2 py-3 text-white w-full mt-2"
+              >
+                Checkout for Payment
+              </label>
+              {/* payment modal */}
+              <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+              <div className="modal" role="dialog">
+                <div className="modal-box">
+                  {/* payment summary order  */}
+                  <PaymentForm />
+                </div>
+                <label className="modal-backdrop" htmlFor="my_modal_7">
+                  Close
+                </label>
+              </div>
             </div>
           )}
         </div>

@@ -60,7 +60,7 @@ const RecommendedProduct = ({ category, heading }) => {
               return (
                 <Link
                   key={index}
-                  to={"product/" + product?._id}
+                  to={"/product/" + product?._id}
                   className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-xl shadow-xl my-6 border border-gray-200 hover:bg-gray-100 px-0 md:px-4"
                   onClick={scrollTop}
                 >

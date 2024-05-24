@@ -1,6 +1,7 @@
 import Banner from "../Components/Banner/Banner";
 import Category from "../Components/Category/Category";
 import HorizontalCardProduct from "../Components/HorizontalProductCard/HorizontalCardProduct";
+import Services from "../Components/Services/Services";
 import VerticalCardProduct from "../Components/VerticalCardProduct/VerticalCardProduct";
 
 const Home = () => {
@@ -28,6 +29,7 @@ const Home = () => {
       />
       <VerticalCardProduct category={"refrigerator"} heading={"Refrigerator"} />
       <VerticalCardProduct category={"trimmers"} heading={"Trimmers"} />
+      <Services />
     </div>
   );
 };

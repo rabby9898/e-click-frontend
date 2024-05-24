@@ -55,7 +55,10 @@ const SearchCard = ({ loading, data = [] }) => {
                   </h2>
 
                   <h4 className="flex justify-between items-center font-medium text-base md:text-base text-ellipsis line-clamp-1 text-gray-400 my-1">
-                    <span>Brand</span> {product?.brandName}
+                    <span className="bg-slate-900 text-white px-3 rounded-full inline-block w-fit my-2">
+                      {product?.category}
+                    </span>
+                    {product?.brandName}
                   </h4>
                   <p className="my-4">
                     <span className="text-lg md:text-3xl font-bold text-slate-900">

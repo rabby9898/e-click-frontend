@@ -185,9 +185,28 @@ const ProductDetails = () => {
             <h2 className="text-2xl lg:text-4xl font-medium my-5">
               {data?.productName}
             </h2>
-            <div className="flex justify-start items-center gap-8">
+            <div className="flex justify-start text-base items-center gap-8">
               <p className="capitalize text-slate-400">{data?.category}</p>
+              <div>
+                <span className="font-bold text-gray-900 dark:text-gray-300">
+                  Availability:
+                </span>
+                <span className="text-gray-600 dark:text-gray-300 ml-3">
+                  In Stock
+                </span>
+              </div>
+            </div>
 
+            <div className="flex items-center gap-2 lg:text-2xl font-medium my-5">
+              <p className="text-slate-900 text-2xl">Price: ${data.price}</p>
+              <p className="text-slate-400 line-through text-sm font-thin">
+                ${data.sellingPrice}
+              </p>
+            </div>
+            <div className="flex justify-start items-center gap-3">
+              <div>
+                <p className="text-slate-900 font-bold">Ratings:</p>
+              </div>
               <div className="text-slate-900 flex items-center gap-1">
                 <FaStar />
                 <FaStar />
@@ -197,14 +216,7 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 text-2xl lg:text-3xl font-medium my-5">
-              <p className="text-slate-900">${data.price}</p>
-              <p className="text-slate-400 line-through">
-                ${data.sellingPrice}
-              </p>
-            </div>
-
-            <div className="flex items-center gap-5 my-2">
+            <div className="flex items-center gap-5 mt-8 mb-5">
               <button
                 className="border-2 border-slate-900 rounded px-5 py-2 min-w-[120px] text-slate-900 font-medium hover:bg-slate-900 hover:text-white"
                 onClick={(e) => handleBuyProduct(e, data?._id)}
