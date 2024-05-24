@@ -1,11 +1,28 @@
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
 const PaymentForm = () => {
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const cardHolder = form.cardHolder.value;
+    const cardNo = form.cardNo.value;
+    const creditCvc = form.creditCvc.value;
+    const creditExpiry = form.creditExpiry.value;
+    console.log(email, cardHolder, cardNo, creditCvc, creditExpiry);
+
+    toast.success("Your Payment Is Successful");
+    navigate("/");
+  };
   return (
     <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
       <p className="text-xl font-medium">Payment Details</p>
       <p className="text-gray-400">
         Complete your order by providing your payment details.
       </p>
-      <div className="">
+      <form onSubmit={handleSubmit} className="">
         <label className="mt-4 mb-2 block text-sm font-medium">Email</label>
         <div className="relative">
           <input
@@ -14,6 +31,7 @@ const PaymentForm = () => {
             name="email"
             className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
             placeholder="your.email@gmail.com"
+            required
           />
           <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
             <svg
@@ -38,10 +56,11 @@ const PaymentForm = () => {
         <div className="relative">
           <input
             type="text"
-            id="card-holder"
+            id="cardHolder"
             name="card-holder"
             className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
             placeholder="Your full name here"
+            required
           />
           <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
             <svg
@@ -67,10 +86,11 @@ const PaymentForm = () => {
           <div className="relative w-7/12 flex-shrink-0">
             <input
               type="text"
-              id="card-no"
-              name="card-no"
+              id="cardNo"
+              name="cardo"
               className="w-full rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
               placeholder="xxxx-xxxx-xxxx-xxxx"
+              required
             />
             <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
               <svg
@@ -88,22 +108,27 @@ const PaymentForm = () => {
           </div>
           <input
             type="text"
-            name="credit-expiry"
+            name="creditExpiry"
             className="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
             placeholder="MM/YY"
+            required
           />
           <input
             type="text"
-            name="credit-cvc"
+            name="creditCvc"
             className="w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
             placeholder="CVC"
+            required
           />
         </div>
 
-        <button className="btn bg-blue-600 p-2 py-3 text-white w-full mt-2">
+        <button
+          type="submit"
+          className="btn bg-blue-600 p-2 py-3 text-white w-full mt-2"
+        >
           Payment
         </button>
-      </div>
+      </form>
     </div>
   );
 };
