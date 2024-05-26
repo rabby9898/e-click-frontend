@@ -2,13 +2,6 @@
 
 ## Live Link: https://eclick-ecommerce.web.app
 
-## Table of Contents
-
-- [Project Description](#project-description)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-
 ## Project Description
 
 This project is a full-featured e-commerce platform built with React and various supporting libraries. It includes user authentication, product browsing, shopping cart functionality, and an admin dashboard for managing users and products.
