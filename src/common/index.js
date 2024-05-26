@@ -1,4 +1,7 @@
-const backendDomain = "http://localhost:9090";
+const backendDomain = "https://e-click-backend.vercel.app";
+
+// https://e-click-backend.vercel.app/
+// http://localhost:9090
 
 const SummaryApi = {
   signUP: {
@@ -75,6 +78,10 @@ const SummaryApi = {
   },
   filterProduct: {
     url: `${backendDomain}/api/filter-product`,
+    method: "post",
+  },
+  paymentProduct: {
+    url: `${backendDomain}/api/payment`,
     method: "post",
   },
 };

@@ -1,9 +1,12 @@
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import SummaryApi from "../../common";
 
 const PaymentForm = () => {
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  // const [data, setData] = useState([]);
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -11,11 +14,30 @@ const PaymentForm = () => {
     const cardNo = form.cardNo.value;
     const creditCvc = form.creditCvc.value;
     const creditExpiry = form.creditExpiry.value;
-    console.log(email, cardHolder, cardNo, creditCvc, creditExpiry);
 
+    const paymentData = {
+      email,
+      cardHolder,
+      cardNo,
+      creditCvc,
+      creditExpiry,
+    };
+
+    console.log(paymentData);
+
+    const dataResponse = await fetch(SummaryApi.paymentProduct.url, {
+      method: SummaryApi.paymentProduct.method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(paymentData),
+    });
+
+    console.log(dataResponse);
     toast.success("Your Payment Is Successful");
     navigate("/");
   };
+
   return (
     <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
       <p className="text-xl font-medium">Payment Details</p>
