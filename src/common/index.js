@@ -1,6 +1,6 @@
 const backendDomain = "https://e-click-backend.vercel.app";
 
-// https://e-click-backend.vercel.app/
+// https://e-click-backend.vercel.app
 // http://localhost:9090
 
 const SummaryApi = {
