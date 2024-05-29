@@ -193,9 +193,10 @@ const Cart = () => {
         </div>
 
         {/***summary  */}
-        <div className="mt-5 lg:mt-0 w-full max-w-sm h-auto">
-          {/* delivery method */}
-          {user && (
+        {user && (
+          <div className="mt-5 lg:mt-0 w-full max-w-sm h-auto">
+            {/* delivery method */}
+
             <div>
               <p className="mt-8 text-lg font-medium">Shipping Methods</p>
               <form className="mt-5 grid gap-6">
@@ -253,43 +254,47 @@ const Cart = () => {
                 </div>
               </form>
             </div>
-          )}
 
-          {loading ? (
-            <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
-          ) : (
-            <div className="h-36 bg-white mt-10">
-              <h2 className="text-white bg-slate-900 px-4 py-2">Summary</h2>
-              <div className="flex items-center justify-between px-4 py-5 gap-2 font-medium text-lg text-slate-600">
-                <p className="">Quantity</p>
-                <p>{totalQty}</p>
-              </div>
-
-              <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
-                <p>Total Price</p>
-                <p>{totalPrice}</p>
-              </div>
-
-              <label
-                htmlFor="my_modal_7"
-                className="btn bg-blue-600 p-2 py-3 text-white w-full mt-2"
-              >
-                Checkout for Payment
-              </label>
-              {/* payment modal */}
-              <input type="checkbox" id="my_modal_7" className="modal-toggle" />
-              <div className="modal" role="dialog">
-                <div className="modal-box">
-                  {/* payment summary order  */}
-                  <PaymentForm />
+            {loading ? (
+              <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
+            ) : (
+              <div className="h-36 bg-white mt-10">
+                <h2 className="text-white bg-slate-900 px-4 py-2">Summary</h2>
+                <div className="flex items-center justify-between px-4 py-5 gap-2 font-medium text-lg text-slate-600">
+                  <p className="">Quantity</p>
+                  <p>{totalQty}</p>
                 </div>
-                <label className="modal-backdrop" htmlFor="my_modal_7">
-                  Close
+
+                <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
+                  <p>Total Price</p>
+                  <p>{totalPrice}</p>
+                </div>
+
+                <label
+                  htmlFor="my_modal_7"
+                  className="btn bg-blue-600 p-2 py-3 text-white w-full mt-2"
+                >
+                  Checkout for Payment
                 </label>
+                {/* payment modal */}
+                <input
+                  type="checkbox"
+                  id="my_modal_7"
+                  className="modal-toggle"
+                />
+                <div className="modal" role="dialog">
+                  <div className="modal-box">
+                    {/* payment summary order  */}
+                    <PaymentForm />
+                  </div>
+                  <label className="modal-backdrop" htmlFor="my_modal_7">
+                    Close
+                  </label>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -80,11 +80,11 @@ const RecommendedProduct = ({ category, heading }) => {
                     </h4>
                     <p className="my-4">
                       <span className="text-3xl font-bold text-slate-900">
-                        ${product?.price}
+                        ${product?.sellingPrice}
                       </span>
                       <span className="text-sm text-slate-900 line-through">
                         {" "}
-                        ${product?.sellingPrice}
+                        ${product?.price}
                       </span>
                     </p>
 
