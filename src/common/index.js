@@ -1,4 +1,4 @@
-const backendDomain = "https://e-click-backend.vercel.app";
+const backendDomain = "http://localhost:9090";
 
 // https://e-click-backend.vercel.app
 // http://localhost:9090
