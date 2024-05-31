@@ -1,7 +1,7 @@
-const backendDomain = "http://localhost:9090";
+const backendDomain = "http://localhost:5000";
 
 // https://e-click-backend.vercel.app
-// http://localhost:9090
+// http://localhost:5000
 
 const SummaryApi = {
   signUP: {
