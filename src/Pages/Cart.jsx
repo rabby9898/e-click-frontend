@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import SummaryApi from "../common";
 import Context from "../Context/Context";
 import { MdDelete } from "react-icons/md";
-import PaymentForm from "../Components/CardForm/PaymentForm";
+// import PaymentForm from "../Components/CardForm/PaymentForm";
 import { useSelector } from "react-redux";
+import { loadStripe } from "@stripe/stripe-js";
 const Cart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -102,7 +103,29 @@ const Cart = () => {
       context.fetchUserAddToCart();
     }
   };
+  // handle payment method
+  const handlePayment = async () => {
+    const stripePromise = await loadStripe(
+      "pk_test_51OImM8IX4OOvdPIIEzhAM5Y4HglHGdxpdk9u8xDWlfndyrKifrufiOOsMccsyPTaGthHSbCVlbh5s3XpwYRQOKBq00HSBpJKC4"
+    );
 
+    const response = await fetch(SummaryApi.payment.url, {
+      method: SummaryApi.payment.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        cartItems: data,
+      }),
+    });
+
+    const responseData = await response.json();
+    if (responseData?.id) {
+      stripePromise.redirectToCheckout({ sessionId: responseData.id });
+    }
+    console.log("response cart:", responseData);
+  };
   /***Summary cart: total qty, total amount func***/
   const totalQty = data.reduce(
     (previousValue, currentValue) => previousValue + currentValue.quantity,
@@ -113,14 +136,14 @@ const Cart = () => {
     0
   );
   return (
-    <div className="container mx-auto h-auto">
+    <div className="container mx-auto max-h-max">
       <div className="text-center text-lg my-3">
         {data.length === 0 && !loading && (
           <p className="bg-white py-5">No Data</p>
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4 shadow-xl h-auto md:h-[600px]">
+      <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4 shadow-xl h-auto md:h-auto">
         {/***view product */}
         <div className="w-full max-w-3xl">
           {loading
@@ -270,13 +293,20 @@ const Cart = () => {
                   <p>{totalPrice}</p>
                 </div>
 
+                <button
+                  onClick={handlePayment}
+                  className="btn bg-blue-600 p-2 py-3 text-white w-full mt-2"
+                >
+                  Checkout for Payment
+                </button>
+                {/* 
                 <label
                   htmlFor="my_modal_7"
                   className="btn bg-blue-600 p-2 py-3 text-white w-full mt-2"
                 >
                   Checkout for Payment
                 </label>
-                {/* payment modal */}
+             
                 <input
                   type="checkbox"
                   id="my_modal_7"
@@ -284,13 +314,13 @@ const Cart = () => {
                 />
                 <div className="modal" role="dialog">
                   <div className="modal-box">
-                    {/* payment summary order  */}
+               
                     <PaymentForm />
                   </div>
                   <label className="modal-backdrop" htmlFor="my_modal_7">
                     Close
                   </label>
-                </div>
+                </div> */}
               </div>
             )}
           </div>

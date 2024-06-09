@@ -1,6 +1,7 @@
 const backendDomain = "http://localhost:5000";
 
 // https://e-click-backend.vercel.app
+// https://eclick-backend.onrender.com
 // http://localhost:5000
 
 const SummaryApi = {
@@ -80,8 +81,8 @@ const SummaryApi = {
     url: `${backendDomain}/api/filter-product`,
     method: "post",
   },
-  paymentProduct: {
-    url: `${backendDomain}/api/payment`,
+  payment: {
+    url: `${backendDomain}/api/checkout`,
     method: "post",
   },
 };
