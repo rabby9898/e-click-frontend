@@ -39,11 +39,11 @@ const OrderPage = () => {
                       return (
                         <div
                           key={product.productId + index}
-                          className="flex  gap-3 bg-slate-100"
+                          className="flex bg-slate-100"
                         >
                           <img
                             src={product.image[0]}
-                            className="w-28 h-28 bg-slate-200 object-scale-down p-2"
+                            className="w-28 h-28 bg-slate-200 object-scale-down p-4"
                           />
                           <div>
                             <div className="font-medium text-lg text-ellipsis line-clamp-1">

@@ -143,80 +143,81 @@ const Cart = () => {
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4 shadow-xl h-auto md:h-auto">
-        {/***view product */}
-        <div className="w-full max-w-3xl">
-          {loading
-            ? loadingCart?.map((el, index) => {
-                return (
-                  <div
-                    key={el + "Add To Cart Loading" + index}
-                    className="w-full bg-slate-200 h-32 my-2 border border-slate-300 animate-pulse rounded"
-                  ></div>
-                );
-              })
-            : data.map((product, index) => {
-                return (
-                  <div
-                    key={product?._id + "Add To Cart Loading"}
-                    className="w-full bg-white h-40 my-2 border border-slate-300 shadow-xl rounded-md grid grid-cols-[128px,1fr]"
-                  >
-                    <div className="w-32 h-40 bg-slate-200">
-                      <img
-                        src={product?.productId?.productImage[0]}
-                        className="w-full h-full object-scale-down mix-blend-multiply"
-                      />
-                    </div>
-                    <div className="px-4 py-2 relative">
-                      {/**delete product */}
-                      <div
-                        className="absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-900 hover:text-white cursor-pointer"
-                        onClick={() => deleteCartProduct(product?._id)}
-                      >
-                        <MdDelete className="text-xl" />
+      {data.length !== 0 && (
+        <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4 shadow-xl h-auto md:h-auto">
+          {/***view product */}
+          <div className="w-full max-w-3xl">
+            {loading
+              ? loadingCart?.map((el, index) => {
+                  return (
+                    <div
+                      key={el + "Add To Cart Loading" + index}
+                      className="w-full bg-slate-200 h-32 my-2 border border-slate-300 animate-pulse rounded"
+                    ></div>
+                  );
+                })
+              : data.map((product, index) => {
+                  return (
+                    <div
+                      key={product?._id + "Add To Cart Loading"}
+                      className="w-full bg-white h-40 my-2 border border-slate-300 shadow-xl rounded-md grid grid-cols-[128px,1fr]"
+                    >
+                      <div className="w-32 h-40 bg-slate-200">
+                        <img
+                          src={product?.productId?.productImage[0]}
+                          className="w-full h-full object-scale-down mix-blend-multiply"
+                        />
                       </div>
-
-                      <h2 className="text-lg lg:text-xl text-ellipsis line-clamp-1 my-3">
-                        {product?.productId?.productName}
-                      </h2>
-                      <p className="capitalize text-slate-500 my-3">
-                        {product?.productId.category}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <p className="text-slate-900 font-medium text-lg">
-                          ${product?.productId?.price}
-                        </p>
-                        <p className="text-slate-600 font-semibold text-lg">
-                          {product?.productId?.price * product?.quantity}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-3 mt-1">
-                        <button
-                          className="border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white w-6 h-6 flex justify-center items-center rounded "
-                          onClick={() =>
-                            decreaseQty(product?._id, product?.quantity)
-                          }
+                      <div className="px-4 py-2 relative">
+                        {/**delete product */}
+                        <div
+                          className="absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-900 hover:text-white cursor-pointer"
+                          onClick={() => deleteCartProduct(product?._id)}
                         >
-                          -
-                        </button>
-                        <span>{product?.quantity}</span>
-                        <button
-                          className="border border-slate-900 text-slate-900 hover:bg-slate-500 hover:text-white w-6 h-6 flex justify-center items-center rounded "
-                          onClick={() =>
-                            increaseQty(product?._id, product?.quantity)
-                          }
-                        >
-                          +
-                        </button>
+                          <MdDelete className="text-xl" />
+                        </div>
+
+                        <h2 className="text-lg lg:text-xl text-ellipsis line-clamp-1 my-3">
+                          {product?.productId?.productName}
+                        </h2>
+                        <p className="capitalize text-slate-500 my-3">
+                          {product?.productId.category}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <p className="text-slate-900 font-medium text-lg">
+                            ${product?.productId?.price}
+                          </p>
+                          <p className="text-slate-600 font-semibold text-lg">
+                            {product?.productId?.price * product?.quantity}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-3 mt-1">
+                          <button
+                            className="border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                            onClick={() =>
+                              decreaseQty(product?._id, product?.quantity)
+                            }
+                          >
+                            -
+                          </button>
+                          <span>{product?.quantity}</span>
+                          <button
+                            className="border border-slate-900 text-slate-900 hover:bg-slate-500 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                            onClick={() =>
+                              increaseQty(product?._id, product?.quantity)
+                            }
+                          >
+                            +
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-        </div>
+                  );
+                })}
+          </div>
 
-        {/***summary  */}
-        {user && (
+          {/***summary  */}
+
           <div className="mt-5 lg:mt-0 w-full max-w-sm h-auto">
             {/* delivery method */}
 
@@ -324,8 +325,8 @@ const Cart = () => {
               </div>
             )}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
