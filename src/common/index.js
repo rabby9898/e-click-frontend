@@ -1,6 +1,6 @@
-const backendDomain = "http://localhost:5000";
+const backendDomain = "https://eclick-backend.vercel.app";
 
-// https://e-click-backend.vercel.app
+// https://eclick-backend.vercel.app
 // https://eclick-backend.onrender.com
 // http://localhost:5000
 

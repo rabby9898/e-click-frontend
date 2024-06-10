@@ -84,6 +84,7 @@ const Header = () => {
                 )}
               </div>
             </div>
+
             <ul
               tabIndex={0}
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
@@ -97,6 +98,14 @@ const Header = () => {
                     Admin Dashboard
                   </Link>
                 )}
+              </li>
+              <li>
+                <Link
+                  to={user ? "/order" : "/login"}
+                  className="whitespace-nowrap hidden md:block hover:bg-slate-100 p-2"
+                >
+                  Order
+                </Link>
               </li>
             </ul>
           </div>

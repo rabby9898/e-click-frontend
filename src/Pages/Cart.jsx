@@ -3,14 +3,14 @@ import SummaryApi from "../common";
 import Context from "../Context/Context";
 import { MdDelete } from "react-icons/md";
 // import PaymentForm from "../Components/CardForm/PaymentForm";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 const Cart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const loadingCart = new Array(4).fill(null);
   const context = useContext(Context);
-  const user = useSelector((state) => state.user?.user);
+  // const user = useSelector((state) => state.user?.user);
 
   /***cart data fetching***/
   const fetchData = async () => {
