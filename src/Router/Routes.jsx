@@ -14,6 +14,7 @@ import Search from "../Pages/Search";
 import Success from "../Pages/Success";
 import Cancel from "../Pages/Cancel";
 import OrderPage from "../Pages/OrderPage";
+import AllOrder from "../Pages/Admin/AllOrderPage";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
           {
             path: "all-products",
             element: <AllProducts></AllProducts>,
+          },
+          {
+            path: "all-orders",
+            element: <AllOrder></AllOrder>,
           },
         ],
       },

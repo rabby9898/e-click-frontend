@@ -62,6 +62,15 @@ const AdminDashboard = () => {
                 <span className="ms-3">All Products</span>
               </Link>
             </li>
+            <li>
+              <Link
+                to={"all-orders"}
+                className="flex items-center text-base p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <FaBorderAll />
+                <span className="ms-3">All Orders</span>
+              </Link>
+            </li>
           </ul>
         </div>
       </aside>

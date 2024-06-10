@@ -1,8 +1,7 @@
-const backendDomain = "https://eclick-backend.vercel.app";
+// const backendDomain = "https://eclick-backend.vercel.app";
+const backendDomain = "http://localhost:5000";
 
-// https://eclick-backend.vercel.app
 // https://eclick-backend.onrender.com
-// http://localhost:5000
 
 const SummaryApi = {
   signUP: {
@@ -87,6 +86,10 @@ const SummaryApi = {
   },
   getOrder: {
     url: `${backendDomain}/api/order-list`,
+    method: "get",
+  },
+  allOrder: {
+    url: `${backendDomain}/api/all-order`,
     method: "get",
   },
 };
